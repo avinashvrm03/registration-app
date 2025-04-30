@@ -12,7 +12,7 @@ pipeline {
     }
     stage('Checkout from SCM') {
       steps {
-        git branch : 'master', credentailsId: 'personal-github-account-login', url: 'git@github.com:avinashvrm03/registration-app.git'
+        git branch: 'master', credentailsId: 'personal-github-account-login', url: 'https://github.com/avinashvrm03/registration-app.git'
       }
     }
     stage('Build Application') {
