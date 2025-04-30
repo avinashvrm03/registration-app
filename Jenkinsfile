@@ -26,7 +26,6 @@ pipeline {
     stage('Build Application') {
       steps {
         sh 'mvn clean package'
-        sh 'ls -la target'
       }
     }
     stage('Test Application') {
