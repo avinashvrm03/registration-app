@@ -11,10 +11,6 @@ pipeline {
     DOCKER_PASS = "dockerhub"
     IMAGE_NAME = "${DOCKER_USER}/${APP_NAME}"
     IMAGE_TAG = "${RELEASE}-${BUILD_NUMBER}"
-    echo "DOCKER_USER: ${DOCKER_USER}"
-   echo "APP_NAME: ${APP_NAME}"
-   echo "IMAGE_NAME: ${IMAGE_NAME}"
-
   }
   stages {
     stage('Cleanup Workspace') {
