@@ -54,7 +54,6 @@ pipeline {
         script {
           docker.withRegistry('',DOCKER_PASS) {
             docker_image = docker.build("${IMAGE_NAME}")
-
           }
           docker.withRegistry('',DOCKER_PASS) {
             docker_image.push("${IMAGE_TAG}")
@@ -62,7 +61,21 @@ pipeline {
           }
         }
       }
-      
+    }
+    stage('Trivy Scan') {
+      steps{
+        script {
+          sh ('docker run -v /var/run/docker.sock:/var/run/docker.sock aquasec/trivy image avinash0001/registration-app-pepeline:latest')
+        }
+      }
+    }
+    stage('CleanUp Artifacts') {
+      steps {
+        script {
+          sh 'docker rmi ${IMAGE_NAME}:${IMAGE_TAG}'
+          sh 'docker rmi ${IMAGE_NAME}:latest'
+        }
+      }
     }
   }
 }
