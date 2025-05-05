@@ -4,7 +4,7 @@ pipeline {
     jdk 'Java21'
     maven 'Maven3'
   }
-  environments {
+  environment {
     APP_NAME = "registration-app-pipeline"
     RELEASE = "1.0.0"
     DOCKER_USER = "avinash0001"
